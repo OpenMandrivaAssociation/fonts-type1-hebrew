@@ -1,13 +1,15 @@
+%define name fonts-type1-hebrew
+%define version 0.101
+%define release %mkrel 3
+
 Summary:	Free Hebrew Type1 fonts
-Name:		fonts-type1-hebrew
-Version:	0.101
-Release:	2mdk
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
 License:	GPL
 Group:		System/Fonts/Type1
 URL:		http://culmus.sourceforge.net/
-
-Source0:	http://belnet.dl.sourceforge.net/sourceforge/culmus/culmus-%{version}.tar.bz2
-
+Source:		http://belnet.dl.sourceforge.net/sourceforge/culmus/culmus-%{version}.tar.bz2
 BuildArch:	noarch
 BuildRoot:	%_tmppath/%name-%version-%release-root
 BuildRequires:	freetype-tools, t1utils
@@ -45,7 +47,9 @@ install -m 0644 fonts.alias %buildroot/%_datadir/fonts/type1/hebrew
 install -m 0644 fonts.scale %buildroot/%_datadir/fonts/type1/hebrew
 # Added for version 0.100
 mkdir -p %buildroot/%_sysconfdir/fonts/conf.d
-install -m 0644 culmus.conf %buildroot/%_sysconfdir/fonts/conf.d/01-culmus.conf
+mkdir -p %buildroot/%_sysconfdir/fonts/conf.avail
+install -m 0644 culmus.conf %buildroot/%_sysconfdir/fonts/conf.avail/01-culmus.conf
+ln -s %_sysconfdir/fonts/conf.avail/01-culmus.conf %buildroot/%_sysconfdir/fonts/conf.d/01-culmus.conf
 
 (
 cd %buildroot/%_datadir/fonts/type1/hebrew/
@@ -77,4 +81,5 @@ rm -fr %buildroot
 %_datadir/fonts/type1/hebrew/*
 # Added for version 0.100
 %_sysconfdir/fonts/conf.d/01-culmus.conf
+%_sysconfdir/fonts/conf.avail/01-culmus.conf
 

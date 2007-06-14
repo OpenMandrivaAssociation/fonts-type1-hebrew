@@ -1,6 +1,6 @@
 %define name fonts-type1-hebrew
 %define version 0.101
-%define release %mkrel 3
+%define release %mkrel 4
 
 Summary:	Free Hebrew Type1 fonts
 Name:		%{name}
@@ -40,11 +40,11 @@ sed -i -e '1,$s/\.pfa/.pfb/' fonts.scale
 %install
 rm -fr %buildroot
 
-mkdir -p %buildroot/%_datadir/fonts/type1/hebrew/
-install -m 0644 *.pfb %buildroot/%_datadir/fonts/type1/hebrew
-install -m 0644 *.afm %buildroot/%_datadir/fonts/type1/hebrew
-install -m 0644 fonts.alias %buildroot/%_datadir/fonts/type1/hebrew
-install -m 0644 fonts.scale %buildroot/%_datadir/fonts/type1/hebrew
+mkdir -p %buildroot/%_datadir/fonts/Type1/hebrew/
+install -m 0644 *.pfb %buildroot/%_datadir/fonts/Type1/hebrew
+install -m 0644 *.afm %buildroot/%_datadir/fonts/Type1/hebrew
+install -m 0644 fonts.alias %buildroot/%_datadir/fonts/Type1/hebrew
+install -m 0644 fonts.scale %buildroot/%_datadir/fonts/Type1/hebrew
 # Added for version 0.100
 mkdir -p %buildroot/%_sysconfdir/fonts/conf.d
 mkdir -p %buildroot/%_sysconfdir/fonts/conf.avail
@@ -52,20 +52,20 @@ install -m 0644 culmus.conf %buildroot/%_sysconfdir/fonts/conf.avail/01-culmus.c
 ln -s %_sysconfdir/fonts/conf.avail/01-culmus.conf %buildroot/%_sysconfdir/fonts/conf.d/01-culmus.conf
 
 (
-cd %buildroot/%_datadir/fonts/type1/hebrew/
+cd %buildroot/%_datadir/fonts/Type1/hebrew/
 cp fonts.scale fonts.dir
 )
 
 %post
-[ -x %_sbindir/chkfontpath ] && %_sbindir/chkfontpath -q -a %_datadir/fonts/type1/hebrew
-touch %{_datadir}/fonts/type1
+[ -x %_sbindir/chkfontpath ] && %_sbindir/chkfontpath -q -a %_datadir/fonts/Type1/hebrew
+touch %{_datadir}/fonts/Type1
 [ -x %_bindir/fc-cache ] && %{_bindir}/fc-cache 
 
 %postun
 # 0 means a real uninstall
 if [ "$1" = "0" ]; then
    [ -x %_sbindir/chkfontpath ] && \
-   %_sbindir/chkfontpath -q -r %_datadir/fonts/type1/hebrew
+   %_sbindir/chkfontpath -q -r %_datadir/fonts/Type1/hebrew
    [ -x %_bindir/fc-cache ] && %{_bindir}/fc-cache 
 fi
 
@@ -76,9 +76,7 @@ rm -fr %buildroot
 %defattr(0644,root,root,0755)
 %doc CHANGES LICENSE LICENSE-BITSTREAM GNU-GPL
 #
-%dir %_datadir/fonts/type1/
-%dir %_datadir/fonts/type1/hebrew/
-%_datadir/fonts/type1/hebrew/*
+%_datadir/fonts/Type1/hebrew
 # Added for version 0.100
 %_sysconfdir/fonts/conf.d/01-culmus.conf
 %_sysconfdir/fonts/conf.avail/01-culmus.conf

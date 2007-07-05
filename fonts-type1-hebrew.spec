@@ -1,6 +1,6 @@
 %define name fonts-type1-hebrew
 %define version 0.101
-%define release %mkrel 4
+%define release %mkrel 5
 
 Summary:	Free Hebrew Type1 fonts
 Name:		%{name}
@@ -13,8 +13,6 @@ Source:		http://belnet.dl.sourceforge.net/sourceforge/culmus/culmus-%{version}.t
 BuildArch:	noarch
 BuildRoot:	%_tmppath/%name-%version-%release-root
 BuildRequires:	freetype-tools, t1utils
-Requires(post):		chkfontpath
-Requires(postun):	chkfontpath
 Requires(post): fontconfig
 Requires(postun): fontconfig
 # Added to avoid conflicts with the official RPM released by Culmus project
@@ -56,16 +54,16 @@ cd %buildroot/%_datadir/fonts/Type1/hebrew/
 cp fonts.scale fonts.dir
 )
 
+mkdir -p %{buildroot}%_sysconfdir/X11/fontpath.d/
+ln -s ../../..%_datadir/fonts/Type1/hebrew \
+    %{buildroot}%_sysconfdir/X11/fontpath.d/type1-hebrew:pri=50
+
 %post
-[ -x %_sbindir/chkfontpath ] && %_sbindir/chkfontpath -q -a %_datadir/fonts/Type1/hebrew
-touch %{_datadir}/fonts/Type1
 [ -x %_bindir/fc-cache ] && %{_bindir}/fc-cache 
 
 %postun
 # 0 means a real uninstall
 if [ "$1" = "0" ]; then
-   [ -x %_sbindir/chkfontpath ] && \
-   %_sbindir/chkfontpath -q -r %_datadir/fonts/Type1/hebrew
    [ -x %_bindir/fc-cache ] && %{_bindir}/fc-cache 
 fi
 
@@ -75,9 +73,9 @@ rm -fr %buildroot
 %files
 %defattr(0644,root,root,0755)
 %doc CHANGES LICENSE LICENSE-BITSTREAM GNU-GPL
-#
 %_datadir/fonts/Type1/hebrew
 # Added for version 0.100
 %_sysconfdir/fonts/conf.d/01-culmus.conf
 %_sysconfdir/fonts/conf.avail/01-culmus.conf
+%_sysconfdir/X11/fontpath.d/type1-hebrew:pri=50
 

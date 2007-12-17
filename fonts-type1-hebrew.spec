@@ -11,7 +11,6 @@ Group:		System/Fonts/Type1
 URL:		http://culmus.sourceforge.net/
 Source:		http://belnet.dl.sourceforge.net/sourceforge/culmus/culmus-%{version}.tar.bz2
 BuildArch:	noarch
-BuildRoot:	%_tmppath/%name-%version-%release-root
 BuildRequires:	freetype-tools, t1utils
 Requires(post): fontconfig
 Requires(postun): fontconfig

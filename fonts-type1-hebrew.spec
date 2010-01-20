@@ -1,6 +1,6 @@
 %define name fonts-type1-hebrew
 %define version 0.103
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary:	Hebrew Type1 fonts
 Name:		%{name}
@@ -13,8 +13,6 @@ Source:		http://belnet.dl.sourceforge.net/sourceforge/culmus/culmus-%{version}.t
 BuildArch:	noarch
 BuildRoot:	%_tmppath/%name-%version-%release-root
 BuildRequires:	freetype-tools, t1utils
-Requires(post): fontconfig
-Requires(postun): fontconfig
 # Added to avoid conflicts with the official RPM released by Culmus project
 Conflicts:	culmus-fonts
 
@@ -65,15 +63,6 @@ ln -s ../../..%_datadir/fonts/Type1/hebrew \
     %{buildroot}%_sysconfdir/X11/fontpath.d/Type1-hebrew:pri=50
 ln -s ../../..%_datadir/fonts/TTF/hebrew \
     %{buildroot}%_sysconfdir/X11/fontpath.d/TTF-hebrew:pri=50
-
-%post
-[ -x %_bindir/fc-cache ] && %{_bindir}/fc-cache 
-
-%postun
-# 0 means a real uninstall
-if [ "$1" = "0" ]; then
-   [ -x %_bindir/fc-cache ] && %{_bindir}/fc-cache 
-fi
 
 %clean
 rm -fr %buildroot

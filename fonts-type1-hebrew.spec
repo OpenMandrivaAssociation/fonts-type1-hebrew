@@ -1,6 +1,6 @@
 %define name fonts-type1-hebrew
-%define version 0.103
-%define release %mkrel 2
+%define version 0.104
+%define release %mkrel 1
 
 Summary:	Hebrew Type1 fonts
 Name:		%{name}

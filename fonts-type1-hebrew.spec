@@ -1,5 +1,5 @@
 %define name fonts-type1-hebrew
-%define version 0.104
+%define version 0.105
 %define release %mkrel 1
 
 Summary:	Hebrew Type1 fonts
@@ -17,11 +17,11 @@ BuildRequires:	freetype-tools, t1utils
 Conflicts:	culmus-fonts
 
 %description
-This Package provides Free Hebrew Type1 fonts, courtesy of the Culmus project.
+This Package provides free Hebrew Type1 fonts, courtesy of the Culmus project.
 
-Since version 0.100 all default sizes have been reduced and names have been
+Since version 0.100, all default sizes have been reduced and names have been
 changed. Once you install this version or a later one, all letters in your
-documents will shrink and a manual tuning will be needed in most cases.
+documents will shrink; manual tuning may therefore be necessary.
 
 %prep
 
@@ -34,19 +34,19 @@ done
 sed -i -e '1,$s/\.pfa/.pfb/' fonts.scale-type1
 
 %install
-rm -fr %buildroot
+%__rm -fr %buildroot
 
 mkdir -p %buildroot/%_datadir/fonts/Type1/hebrew/
 mkdir -p %buildroot/%_datadir/fonts/TTF/hebrew/
-install -m 0644 *.pfb %buildroot/%_datadir/fonts/Type1/hebrew
-install -m 0644 *.afm %buildroot/%_datadir/fonts/Type1/hebrew
-install -m 0644 *.ttf %buildroot/%_datadir/fonts/TTF/hebrew
-install -m 0644 fonts.scale-type1 %buildroot/%_datadir/fonts/Type1/hebrew/fonts.scale
-install -m 0644 fonts.scale-ttf %buildroot/%_datadir/fonts/TTF/hebrew/fonts.scale
+%__install -m 0644 *.pfb %buildroot/%_datadir/fonts/Type1/hebrew
+%__install -m 0644 *.afm %buildroot/%_datadir/fonts/Type1/hebrew
+%__install -m 0644 *.ttf %buildroot/%_datadir/fonts/TTF/hebrew
+%__install -m 0644 fonts.scale-type1 %buildroot/%_datadir/fonts/Type1/hebrew/fonts.scale
+%__install -m 0644 fonts.scale-ttf %buildroot/%_datadir/fonts/TTF/hebrew/fonts.scale
 # Added for version 0.100
 mkdir -p %buildroot/%_sysconfdir/fonts/conf.d
 mkdir -p %buildroot/%_sysconfdir/fonts/conf.avail
-install -m 0644 culmus.conf %buildroot/%_sysconfdir/fonts/conf.avail/01-culmus.conf
+%__install -m 0644 culmus.conf %buildroot/%_sysconfdir/fonts/conf.avail/01-culmus.conf
 ln -s %_sysconfdir/fonts/conf.avail/01-culmus.conf %buildroot/%_sysconfdir/fonts/conf.d/01-culmus.conf
 
 (
@@ -65,7 +65,7 @@ ln -s ../../..%_datadir/fonts/TTF/hebrew \
     %{buildroot}%_sysconfdir/X11/fontpath.d/TTF-hebrew:pri=50
 
 %clean
-rm -fr %buildroot
+%__rm -fr %buildroot
 
 %files
 %defattr(0644,root,root,0755)

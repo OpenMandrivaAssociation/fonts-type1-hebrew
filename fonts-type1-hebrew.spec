@@ -1,5 +1,5 @@
 %define name fonts-type1-hebrew
-%define version 0.105
+%define version 0.110
 %define release %mkrel 1
 
 Summary:	Hebrew Type1 fonts

@@ -1,11 +1,11 @@
 Summary:	Hebrew Type1 fonts
 Name:		fonts-type1-hebrew
-Version:	0.120
-Release:	5
+Version:	0.130
+Release:	1
 License:	GPLv2
 Group:		System/Fonts/Type1
 Url:		http://culmus.sourceforge.net/
-Source0:	http://belnet.dl.sourceforge.net/sourceforge/culmus/culmus-%{version}.tar.gz
+Source0:	https://sourceforge.net/projects/culmus/files/culmus/0.130/culmus-%{version}.tar.gz
 BuildArch:	noarch
 BuildRequires:	fontconfig
 BuildRequires:	freetype-tools
@@ -66,4 +66,5 @@ ln -s ../../..%{_datadir}/fonts/TTF/hebrew \
 %{_sysconfdir}/fonts/conf.avail/01-culmus.conf
 %{_sysconfdir}/X11/fontpath.d/Type1-hebrew:pri=50
 %{_sysconfdir}/X11/fontpath.d/TTF-hebrew:pri=50
+
 

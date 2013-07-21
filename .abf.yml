@@ -1,2 +1,4 @@
+removed_sources:
+  culmus-0.120.tar.gz: 6be4ec69c544ca46d686d9357ef274366fe9fbcf
 sources:
-  "culmus-0.120.tar.gz": 6be4ec69c544ca46d686d9357ef274366fe9fbcf
+  culmus-0.130.tar.gz: 7ed5a384c3473cd815f8a9925a3d37005bbc67b5

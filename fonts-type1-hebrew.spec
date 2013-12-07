@@ -1,7 +1,7 @@
 Summary:	Hebrew Type1 fonts
 Name:		fonts-type1-hebrew
 Version:	0.130
-Release:	3
+Release:	4
 License:	GPLv2
 Group:		System/Fonts/Type1
 Url:		http://culmus.sourceforge.net/

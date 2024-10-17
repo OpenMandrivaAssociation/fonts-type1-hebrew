@@ -4,7 +4,7 @@ Version:	0.130
 Release:	11
 License:	GPLv2
 Group:		System/Fonts/Type1
-Url:		http://culmus.sourceforge.net/
+Url:		https://culmus.sourceforge.net/
 Source0:	http://belnet.dl.sourceforge.net/sourceforge/culmus/culmus-%{version}.tar.gz
 BuildArch:	noarch
 BuildRequires:	fontconfig
